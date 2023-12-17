@@ -21,15 +21,14 @@ int main() {
     g_logger->setLevel(sylar::LogLevel::WARN);
     SYLAR_LOG_FATAL(g_logger) << "fatal msg";
     SYLAR_LOG_ERROR(g_logger) << "err msg";
-    SYLAR_LOG_INFO(g_logger) << "info msg"; // 不打印
+    SYLAR_LOG_INFO(g_logger) << "info msg";   // 不打印
     SYLAR_LOG_DEBUG(g_logger) << "debug msg"; // 不打印
-
 
     sylar::FileLogAppender::ptr fileAppender(new sylar::FileLogAppender("./log.txt"));
     g_logger->addAppender(fileAppender);
     SYLAR_LOG_FATAL(g_logger) << "fatal msg";
     SYLAR_LOG_ERROR(g_logger) << "err msg";
-    SYLAR_LOG_INFO(g_logger) << "info msg"; // 不打印
+    SYLAR_LOG_INFO(g_logger) << "info msg";   // 不打印
     SYLAR_LOG_DEBUG(g_logger) << "debug msg"; // 不打印
 
     sylar::Logger::ptr test_logger = SYLAR_LOG_NAME("test_logger");

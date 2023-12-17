@@ -37,11 +37,13 @@
  * @details 构造一个LogEventWrap对象，包裹包含日志器和日志事件，在对象析构时调用日志器写日志事件
  * @todo 协程id未实现，暂时写0
  */
-#define SYLAR_LOG_LEVEL(logger , level) \
-    if(level <= logger->getLevel()) \
-        sylar::LogEventWrap(logger, sylar::LogEvent::ptr(new sylar::LogEvent(logger->getName(), \
-            level, __FILE__, __LINE__, sylar::GetElapsed() - logger->getCreateTime(), \
-            sylar::GetThreadId(), sylar::GetFiberId(), time(0), sylar::GetThreadName()))).getLogEvent()->getSS()
+#define SYLAR_LOG_LEVEL(logger, level)                                                                                                                 \
+    if (level <= logger->getLevel())                                                                                                                   \
+    sylar::LogEventWrap(logger, sylar::LogEvent::ptr(new sylar::LogEvent(logger->getName(),                                                            \
+                                                                         level, __FILE__, __LINE__, sylar::GetElapsed() - logger->getCreateTime(),     \
+                                                                         sylar::GetThreadId(), sylar::GetFiberId(), time(0), sylar::GetThreadName()))) \
+        .getLogEvent()                                                                                                                                 \
+        ->getSS()
 
 #define SYLAR_LOG_FATAL(logger) SYLAR_LOG_LEVEL(logger, sylar::LogLevel::FATAL)
 
@@ -64,11 +66,13 @@
  * @details 构造一个LogEventWrap对象，包裹包含日志器和日志事件，在对象析构时调用日志器写日志事件
  * @todo 协程id未实现，暂时写0
  */
-#define SYLAR_LOG_FMT_LEVEL(logger, level, fmt, ...) \
-    if(level <= logger->getLevel()) \
-        sylar::LogEventWrap(logger, sylar::LogEvent::ptr(new sylar::LogEvent(logger->getName(), \
-            level, __FILE__, __LINE__, sylar::GetElapsed() - logger->getCreateTime(), \
-            sylar::GetThreadId(), sylar::GetFiberId(), time(0), sylar::GetThreadName()))).getLogEvent()->printf(fmt, __VA_ARGS__)
+#define SYLAR_LOG_FMT_LEVEL(logger, level, fmt, ...)                                                                                                   \
+    if (level <= logger->getLevel())                                                                                                                   \
+    sylar::LogEventWrap(logger, sylar::LogEvent::ptr(new sylar::LogEvent(logger->getName(),                                                            \
+                                                                         level, __FILE__, __LINE__, sylar::GetElapsed() - logger->getCreateTime(),     \
+                                                                         sylar::GetThreadId(), sylar::GetFiberId(), time(0), sylar::GetThreadName()))) \
+        .getLogEvent()                                                                                                                                 \
+        ->printf(fmt, __VA_ARGS__)
 
 #define SYLAR_LOG_FMT_FATAL(logger, fmt, ...) SYLAR_LOG_FMT_LEVEL(logger, sylar::LogLevel::FATAL, fmt, __VA_ARGS__)
 
@@ -96,23 +100,23 @@ public:
     /**
      * @brief 日志级别枚举，参考log4cpp
      */
-    enum Level { 
+    enum Level {
         /// 致命情况，系统不可用
-        FATAL  = 0,
+        FATAL = 0,
         /// 高优先级情况，例如数据库系统崩溃
-        ALERT  = 100,
+        ALERT = 100,
         /// 严重错误，例如硬盘错误
-        CRIT   = 200,
+        CRIT = 200,
         /// 错误
-        ERROR  = 300,
+        ERROR = 300,
         /// 警告
-        WARN   = 400,
+        WARN = 400,
         /// 正常但值得注意
         NOTICE = 500,
         /// 一般信息
-        INFO   = 600,
+        INFO = 600,
         /// 调试信息
-        DEBUG  = 700,
+        DEBUG = 700,
         /// 未设置
         NOTSET = 800,
     };
@@ -152,8 +156,7 @@ public:
      * @param[in] time UTC时间
      * @param[in] thread_name 线程名称
      */
-    LogEvent(const std::string &logger_name, LogLevel::Level level, const char *file, int32_t line
-        , int64_t elapse, uint32_t thread_id, uint64_t fiber_id, time_t time, const std::string &thread_name);
+    LogEvent(const std::string &logger_name, LogLevel::Level level, const char *file, int32_t line, int64_t elapse, uint32_t thread_id, uint64_t fiber_id, time_t time, const std::string &thread_name);
 
     /**
      * @brief 获取日志级别
@@ -426,7 +429,7 @@ private:
  * @brief 日志器类
  * @note 日志器类不带root logger
  */
-class Logger{
+class Logger {
 public:
     typedef std::shared_ptr<Logger> ptr;
     typedef Spinlock MutexType;
@@ -435,7 +438,7 @@ public:
      * @brief 构造函数
      * @param[in] name 日志器名称 
      */
-    Logger(const std::string &name="default");
+    Logger(const std::string &name = "default");
 
     /**
      * @brief 获取日志器名称
@@ -493,7 +496,7 @@ private:
 /**
  * @brief 日志事件包装器，方便宏定义，内部包含日志事件和日志器
  */
-class LogEventWrap{
+class LogEventWrap {
 public:
     /**
      * @brief 构造函数
@@ -523,7 +526,7 @@ private:
 /**
  * @brief 日志器管理类
  */
-class LoggerManager{
+class LoggerManager {
 public:
     typedef Spinlock MutexType;
 
