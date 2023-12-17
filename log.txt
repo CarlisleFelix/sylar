@@ -1,0 +1,2 @@
+2023-12-16 19:46:32 [1001ms]	3759	brand_new_threa	0	[FATAL]	[root]	tests/test_log.cpp:30	fatal msg
+2023-12-16 19:46:32 [1001ms]	3759	brand_new_threa	0	[ERROR]	[root]	tests/test_log.cpp:31	err msg
