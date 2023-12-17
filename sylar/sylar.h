@@ -8,6 +8,7 @@
 #ifndef __SYLAR_SYLAR_H__
 #define __SYLAR_SYLAR_H__
 
+#include "env.h"
 #include "log.h"
 #include "macro.h"
 #include "mutex.h"
