@@ -80,12 +80,12 @@ void Config::LoadFromConfDir(const std::string &path, bool force) {
     std::vector<std::string> files;
     FSUtil::ListAllFile(files, absoulte_path, ".yml");
 
-    SYLAR_LOG_INFO(g_logger) << "absolute_path="
-                             << absoulte_path;
-    SYLAR_LOG_INFO(g_logger) << "path="
-                             << path;
-    SYLAR_LOG_INFO(g_logger) << "files size="
-                             << files.size();
+    // SYLAR_LOG_INFO(g_logger) << "absolute_path="
+    //                          << absoulte_path;
+    // SYLAR_LOG_INFO(g_logger) << "path="
+    //                          << path;
+    // SYLAR_LOG_INFO(g_logger) << "files size="
+    //                          << files.size();
 
     for (auto &i : files) {
         {
