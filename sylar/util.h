@@ -8,6 +8,7 @@
 #ifndef __SYLAR_UTIL_H__
 #define __SYLAR_UTIL_H__
 
+#include <cxxabi.h>
 #include <iostream>
 #include <stdint.h>
 #include <string>
@@ -210,6 +211,12 @@ public:
     /// atof，参考atof(3)
     static double Atof(const char *str);
 };
+
+template <class T>
+const char *TypeToName() {
+    static const char *s_name = abi::__cxa_demangle(typeid(T).name(), nullptr, nullptr, nullptr);
+    return s_name;
+}
 
 } // namespace sylar
 

@@ -96,7 +96,7 @@ public:
     /**
      * @brief 获取工作路径
      */
-    // std::string getAbsoluteWorkPath(const std::string& path) const;
+    std::string getAbsoluteWorkPath(const std::string& path) const;
 
     /**
      * @brief 获取配置文件路径，配置文件路径通过命令行-c选项指定，默认为当前目录下的conf文件夹
