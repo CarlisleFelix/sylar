@@ -6,6 +6,7 @@
  * @date 2023-12-15
  */
 #include "util.h"
+#include "fiber.h"
 #include "log.h"
 #include "util.h"
 #include <algorithm> // for std::transform()
@@ -28,7 +29,7 @@ pid_t GetThreadId() {
 }
 
 uint64_t GetFiberId() {
-    return 0;
+    return Fiber::GetFiberId();
 }
 
 uint64_t GetElapsed() {
