@@ -8,10 +8,10 @@
 #ifndef __SYLAR_FIBER_H__
 #define __SYLAR_FIBER_H__
 
+#include "thread.h"
 #include <functional>
 #include <memory>
 #include <ucontext.h>
-#include "thread.h"
 
 namespace sylar {
 
@@ -51,7 +51,7 @@ public:
      * @param[] cb 协程入口函数
      * @param[] stacksize 栈大小
      */
-    Fiber(std::function<void()> cb, size_t stacksize = 0);
+    Fiber(std::function<void()> cb, size_t stacksize = 0, bool run_in_scheduler = true);
 
     /**
      * @brief 析构函数
@@ -118,17 +118,19 @@ public:
 
 private:
     /// 协程id
-    uint64_t m_id        = 0;
+    uint64_t m_id = 0;
     /// 协程栈大小
     uint32_t m_stacksize = 0;
     /// 协程状态
-    State m_state        = READY;
+    State m_state = READY;
     /// 协程上下文
     ucontext_t m_ctx;
     /// 协程栈地址
     void *m_stack = nullptr;
     /// 协程入口函数
     std::function<void()> m_cb;
+    /// 本协程是否参与调度器调度
+    bool m_runInScheduler;
 };
 
 } // namespace sylar
