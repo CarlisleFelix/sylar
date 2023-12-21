@@ -462,7 +462,7 @@ bool FileLogAppender::reopen() {
 Logger::Logger(const std::string &name)
     : m_name(name)
     , m_level(LogLevel::INFO)
-    , m_createTime(GetElapsed()) {
+    , m_createTime(GetElapsedMS()) {
 }
 
 void Logger::addAppender(LogAppender::ptr appender) {
