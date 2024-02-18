@@ -22,5 +22,8 @@
 #include "singleton.h"
 #include "thread.h"
 #include "util.h"
+#include "endian.h"
+#include "address.h"
+#include "socket.h"
 
 #endif
