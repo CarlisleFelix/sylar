@@ -7,6 +7,7 @@
  */
 #include "scheduler.h"
 #include "macro.h"
+#include "hook.h"
 
 namespace sylar {
 
@@ -179,6 +180,7 @@ void Scheduler::stop() {
  */
 void Scheduler::run() {
     SYLAR_LOG_DEBUG(g_logger) << "run";
+    set_hook_enable(true);
     /**
      * 首先设置本线程的scheduler
      * 
