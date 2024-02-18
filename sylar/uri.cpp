@@ -112,4 +112,13 @@ std::string Uri::toString() const {
 
     return ss.str();
 }
+
+Address::ptr Uri::createAddress() const {
+    auto addr = Address::LookupAnyIPAddress(m_host);
+    if(addr) {
+        addr->setPort(getPort());
+    }
+    return addr;
+}
+
 } // namespace sylar
