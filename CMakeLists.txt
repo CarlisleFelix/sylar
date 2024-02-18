@@ -52,7 +52,8 @@ set(LIB_SRC
     sylar/streams/socket_stream.cpp
     sylar/http/http_session.cpp 
     sylar/http/servlet.cpp
-    sylar/http/http_server.cpp 
+    sylar/http/http_server.cpp
+    sylar/uri.cpp  
     )
 
 add_library(sylar SHARED ${LIB_SRC})
@@ -85,6 +86,7 @@ sylar_add_executable(test_tcp_server "tests/test_tcp_server.cpp" sylar "${LIBS}"
 sylar_add_executable(test_http "tests/test_http.cpp" sylar "${LIBS}")
 sylar_add_executable(test_http_parser "tests/test_http_parser.cpp" sylar "${LIBS}")
 sylar_add_executable(test_http_server "tests/test_http_server.cpp" sylar "${LIBS}")
+sylar_add_executable(test_uri "tests/test_uri.cpp" sylar "${LIBS}")
 
 endif()
 
