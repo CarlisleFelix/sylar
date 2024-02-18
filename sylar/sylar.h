@@ -27,5 +27,7 @@
 #include "socket.h"
 #include "bytearray.h"
 #include "tcp_server.h"
+#include "http/http.h"
+
 
 #endif
