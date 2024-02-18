@@ -34,5 +34,6 @@
 #include "sylar/http/http_server.h"
 #include "sylar/uri.h"
 #include "sylar/http/http_connection.h"
+#include "daemon.h"
 
 #endif
